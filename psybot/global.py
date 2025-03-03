@@ -86,3 +86,21 @@ async def download_file(file_id: str):
         raise HTTPException(status_code=404, detail="File not found")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error retrieving file: {str(e)}")
+
+@app.get("/download-global/")
+async def download_global_model():
+    try:
+        global_model = db.fs.files.find_one({"metadata.file_type": "global"}, sort=[("uploadDate", -1)])
+        if not global_model:
+            raise HTTPException(status_code=404, detail="Global model not found.")
+        
+        file_data = fs.get(global_model["_id"])
+        return StreamingResponse(
+            io.BytesIO(file_data.read()),
+            media_type="application/octet-stream",
+            headers={"Content-Disposition": f"attachment; filename={file_data.filename}"}
+        )
+    except gridfs.errors.NoFile:
+        raise HTTPException(status_code=404, detail="Global model file not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error retrieving global model: {str(e)}")
