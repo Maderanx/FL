@@ -55,8 +55,8 @@ def main_dashboard():
             st.error("Upload failed.")
 
     # Global Model Download Section
-    st.write("### Download Global Model")
-    if st.button("Download Global Model"):
+    st.write("### Fetch Global Model")
+    if st.button("Fetch Global Model"):
         response = requests.get(f"{BACKEND_URL}/download-global/", stream=True)
 
         if response.status_code == 200:
