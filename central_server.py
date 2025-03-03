@@ -6,7 +6,7 @@ from pymongo.server_api import ServerApi
 import gridfs
 import io
 from bson import ObjectId
-import uvicorn
+import uvicorn as uvicorn
 
 # Shared encryption key (pre-generated)
 SHARED_KEY = b'sOYmV8-CebMYXZsNaXEJ-ZWBsBkuDzfGCLrG76SSodo='
