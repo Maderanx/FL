@@ -1,6 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse, StreamingResponse
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import gridfs
 import io
@@ -10,7 +10,7 @@ from bson import ObjectId
 app = FastAPI()
 
 # MongoDB Atlas Connection (Local Server Credentials)
-MONGO_URI = "mongodb+srv://local_a:local_a@fl.g0vo7.mongodb.net/?retryWrites=true&w=majority&appName=FL"
+MONGO_URI = "mongodb+srv://local_a:local_a@fl.g0vo7.mongodb.net/?appName=FL"
 
 try:
     client = MongoClient(MONGO_URI, server_api=ServerApi("1"))
