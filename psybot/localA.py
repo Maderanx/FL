@@ -10,7 +10,7 @@ from bson import ObjectId
 app = FastAPI()
 
 # MongoDB Atlas Connection (Local Server Credentials)
-MONGO_URI = "mongodb+srv://local_a:local_a@fl.g0vo7.mongodb.net/?appName=FL"
+MONGO_URI = "mongodb+srv://local_a:local_a@fl.yreoibi.mongodb.net/?retryWrites=true&w=majority&appName=FL"
 
 try:
     client = MongoClient(MONGO_URI, server_api=ServerApi("1"))
